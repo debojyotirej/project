@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0 ;
+    scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+:root{
+    --main-color: #0b178f ;
+    --text-color : #1c2844;
+}
+body{
+    color: #fff;
+
+}
+/* custom scroll bar */
+html::-webkit-scrollbar{
+    width: 0.5rem;
+}
+html ::-webkit-scrollbar-track {
+background-color: transparent;
+}
+html ::-webkit-scrollbar-thumb {
+background: var(--main-color);
+border-radius: 5rem;
+}
+header{
+    position: fixed;
+    width:100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 18px 10%;
+    transition: 0.2s;
+}
+.logo{
+ font-size: 1.1rem;
+ font-weight: 600;
+ color: var(--text-color);
+}
+.navbar  {
+display: flex;
+}
+.navbar a{
+    font-size: 1rem;
+    padding: 10px 20px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+.navbar a:hover{
+    background: var(--text-color);
+    color: #fff;
+}
