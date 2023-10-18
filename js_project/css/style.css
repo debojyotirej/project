@@ -1,0 +1,55 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600&family=Poppins:wght@200;300;600;700&family=Roboto:ital,wght@0,100;0,300;1,100&family=Young+Serif&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+
+.main {
+    width: 100%;
+    height: 100vh;
+    background: url(../img/20150404133022.jpg) center center;
+    background-size: cover;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    
+    align-items: center;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.title{
+    color: azure;
+    font-family: 'Young Serif', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    
+}
+.col{
+    margin-top: 10px;
+    width: 1000px;
+    display: flex;
+    justify-content: center;
+    color: bisque;
+    
+}
+.col div {
+    width: 250px;
+    text-align: center;
+}
+input{
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: transparent;
+    border-radius: 5px;
+    height: 60px;
+    width:60%;
+    text-align: center;
+    font-size: 50px;
+}
