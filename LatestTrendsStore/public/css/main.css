@@ -1,0 +1,322 @@
+header,
+main {
+    text-align: center;
+    background-color: #fff;
+}
+
+body {
+    background-color: gainsboro;
+    margin: 0;
+}
+
+header {
+    top: 0;
+    position: fixed;
+    background-color: rgb(235, 186, 123);
+    left: 0px;
+    right: 0px;
+    height: 70px;
+    z-index: 999;
+}
+
+main {
+    min-height: 900px;
+    margin: 10px;
+    margin-top: 70px;
+    padding: 13px;
+    overflow: auto;
+}
+
+.logoutBtns{
+    display: none;
+}
+
+/* button modal */
+
+.loginLink {
+    text-align: right;
+    color: blue;
+    cursor: pointer;
+}
+
+
+.loginLink:hover {
+    text-decoration: underline;
+}
+
+.modal-body li {
+    list-style: none;
+    margin: 10px;
+}
+
+.modal-body ul {
+    margin: 5px;
+    padding: 5px;
+}
+
+.form-control {
+    width: 300px;
+}
+
+/* Captcha   */
+.captcha {
+    margin-top: 20px;
+}
+
+.carousel-inner {
+    height: 450px;
+}
+
+.carousel-inner img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.refresh-btn {
+    margin-top: 10px;
+}
+
+
+
+/* Media Queries for Navbar */
+
+@media(max-width: 767px) {
+
+    .navbar-collapse {
+        background-color: rgb(235, 186, 123);
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        padding: 15px;
+        text-align: center;
+        display: none;
+    }
+
+    .navbar-toggler {
+        display: block;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .navbar-nav .nav-item {
+        margin: 10px 0;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 10px;
+    }
+
+    .navbar-collapse.show {
+        display: block;
+    }
+}
+
+
+/* CSS for desktop screens */
+@media (min-width: 992px) and (max-width: 1199px) {
+    header {
+        position: fixed;
+    }
+
+    .navbar-brand {
+        margin-right: 2rem;
+    }
+
+    .navbar-nav {
+        flex-direction: row;
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+}
+
+/* CSS for tablet screens */
+@media (max-width: 991px) {
+    .navbar-brand {
+        margin-right: 1rem;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+    }
+
+    .navbar-nav .nav-item {
+        margin-left: 0;
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+}
+
+
+/* For footer */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    background-color: #24262b;
+    padding: 70px 0;
+}
+
+.footer-container {
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    font-size: 18px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+.invalidCredentials {
+    text-align: center;
+    color: red;
+    font-size: 15px;
+    display: none;
+}
+
+#carousel_container {
+    z-index: 5;
+}
+
+#navbar_main {
+    z-index: 7;
+}
+
+.successSignup {
+    text-align: center;
+    font-weight: bold;
+    color: green;
+    display: none;
+}
+
+.passwordValidation {
+    margin-left: 5px;
+}
+.passwordValidation p , .repPassValidation p, .emailValidation p {
+    margin: 3px;
+    font-size: 13px;
+    color: red;
+}
+
+.passwordValidation {
+    display: none;
+}
+.repPassValidation {
+    display: none;
+}
+.emailValidation{
+    display: none;
+}
+
+.invalidCredentialsInSignUp {
+    display: none;
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
+/*responsive*/
+@media(max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}

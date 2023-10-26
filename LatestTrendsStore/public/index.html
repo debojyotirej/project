@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.png">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/productDetails.css">
+  <link rel="stylesheet" href="css/chatApp.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.2/socket.io.js"></script>
+  <script src="js/chatApp.js"> </script>
+  <script src="js/lib/jqueryMini.js"></script>
+  <script src="js/generateCaptcha.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/lib/axios.min.js"></script>
+  <script src="js/loadProductData.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/signupUser.js"></script>
+  <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <header id="navbar_main">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/favicon.png" alt="Logo" width="100" height="40">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navBurgerButton">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <form class="d-flex flex-grow-1">
+            <input class="form-control me-2" type="search" placeholder="Search for products, brands, and more"
+              aria-label="Search">
+            <button class="btn btn-outline-dark me-lg-3" type="submit">Search</button>
+          </form>
+<div class="loginLink logoutBtns">
+          <ul class="navbar-nav ml-auto me-3" data-bs-toggle="modal" data-bs-target="#cartDialog"
+          onclick="cart();">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Cart
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="50" fill="currentColor" class="bi bi-bag"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+          <div class="loginLink loginBtns">
+            <button type="button" class="btn btn-primary" onclick="showChatWindow()">Chat with Support</button>
+            <button type="button" class="btn btn-primary" onclick="showLoginDialog()">Login</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signupDialog"
+              onclick="signUp();">New
+              Signup</button>
+          </div>
+
+          <div class="loginLink logoutBtns">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logOutModal">Logout</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+
+
+  </main>
+  <div class="chatBlock">
+    <div class="msgBlock"> </div>
+    <div class="btnBlock">
+      <input type="text" id="userMsg"> 
+      <input type="button" value="Send" class="btn btn-primary" onclick="sendMsg()">
+    </div>
+  </div>
+
+  <!-- footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>company</h4>
+          <ul>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">our services</a></li>
+            <li><a href="#">privacy policy</a></li>
+            <li><a href="#">affiliate program</a></li>
+            <li><a href="admin.html">Sell Products</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>get help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">order status</a></li>
+            <li><a href="#">payment options</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>online shop</h4>
+          <ul>
+            <li><a href="#">watch</a></li>
+            <li><a href="#">bag</a></li>
+            <li><a href="#">shoes</a></li>
+            <li><a href="#">dress</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>follow us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal fade" id="cartDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-bottom-0">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Your Shopping Cart</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeBtn();"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-group table table-image">
+              <li class="list-group-item thead">
+                <div class="row">
+                  <div class="col-3">Image</div>
+                  <div class="col">Product Name</div>
+                  <div class="col">Price</div>
+                  <div class="col">Qty</div>
+                  <div class="col">Total</div>
+                  <div class="col">Actions</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeBtn();"
+              id="closeButton">Close</button>
+            <button type="button" class="btn btn-primary" onclick="checkOut();">Checkout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">User Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeBtn();"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter user Id" id="userId">
+            </li>
+            <li>
+              <input type="password" class="form-control" placeholder="Account Password" id="acctPassword">
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter below Captcha" id="captchaInput">
+            </li>
+            <li class="captcha">
+              <img id="captchaImage" src="">
+              <button class="btn btn-secondary refresh-btn" onclick="refreshCaptcha()">Refresh</button>
+            </li>
+
+            <li>
+              <p><a class="link-opacity-100" href="#" data-bs-toggle="modal" data-bs-target="#forgotPwdDialog"
+                  id="forgotPwdInLogin" onclick="forgotPwdInLogin();">Forgot
+                  Password</a></p>
+            </li>
+            <li>
+              <input type="checkbox" id="rememberMeCheckbox">
+              <label for="rememberMeCheckbox">Remember me</label>
+            </li>
+            <li class="invalidCredentials">
+              Invalid Credentials UserId / Password..
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <div>
+            New User? <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#signupDialog" id="signUpInLogin" onclick="addNewUser();">SignUp</button>
+          </div>
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeBtn();"
+            id="closeButton">Close</button>
+          <button type="button" class="btn btn-primary" onclick="validateeUserCredentials();">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Signup Modal -->
+  <div class="modal fade" id="signupDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">New User Signup</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="signUpCloseBtn();"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter user Id" id="signUpId">
+            </li>
+            <li>
+              <input type="password" class="form-control" placeholder="Account Password" id="signUpPwd" onkeyup="validatePasswordSimple(event)" onfocus="showValidationDialogue()">
+              <div class="passwordValidation">
+                <p id="num2">Should have 2 Numbers</p>
+                <p id="low2">Should have 2 lowercase Characters</p>
+              </div>
+            </li>
+            <li>
+              <input type="password" class="form-control" placeholder="Reenter Password" id="signUpRepPwd" onkeyup="validateRePassword(event)" disabled>
+              <div class="repPassValidation">
+                <p>Password should match</p>
+              </div>
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter mail id" id="signUpMail" onkeyup="ValidateEmail(event)">
+              <div class="emailValidation">
+                <p>Enter a valid Email</p>
+              </div>
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter below Captcha" id="signUpCaptcha">
+            </li>
+            <li class="captcha">
+              <img id="captchaImageInSignup" src="">
+              <button class="btn btn-secondary refresh-btn" onclick="refreshCaptchaOnSignUp()">Refresh</button>
+            </li>
+          </ul>
+          <div class="invalidCredentialsInSignUp">Invalid Captcha</div>
+          <div class="successSignup">User got signed up Successfully</div>
+        </div>
+        <div class="modal-footer">
+          <div>
+            Already have account? <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#loginDialog" id="loginInSignUp" onclick="loginInSignUp();">
+              Login
+            </button>
+          </div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="signUpcloseBtn();"
+            id="closeButton">Close</button>
+          <button type="button" class="btn btn-primary" onclick="addNewUser()">Signup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Forgot Modal -->
+
+  <div class="modal fade" id="forgotPwdDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Forgot Password</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeBtnOnForgotPwd();"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter user Id" id="userIdInForgot">
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter mail id" id="mailIdInForgot">
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter below Captcha" id="captchaInForgot">
+            </li>
+            <li class="captcha">
+              <img id="captchaImageInForgot" src="">
+              <button class="btn btn-secondary refresh-btn" onclick="refreshCaptchaOnForgot()">Refresh</button>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeBtnOnForgotPwd"
+            onclick="closeBtnOnForgotPwd();">Close</button>
+          <button type="button" class="btn btn-primary">Send Mail</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Warning Modal -->
+  <div class="modal fade" id="logOutModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure ?</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary" onclick="logOutYesBtn();" data-bs-dismiss="modal">Yes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - add new Product</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="js/admin.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/lib/jqueryMini.js"></script>
+    <script src="js/lib/axios.min.js"></script>
+</head>
+
+<body>
+    <header id="navbar_main">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">
+              <img src="images/favicon.png" alt="Logo" width="100" height="40">
+            </a>
+    
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" id="navBurgerButton">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <form class="d-flex flex-grow-1">
+                <input class="form-control me-2" type="search" placeholder="Search for products, brands, and more"
+                  aria-label="Search">
+                <button class="btn btn-outline-dark me-lg-3" type="submit">Search</button>
+              </form>
+    
+              <div class="loginLink loginBtns">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#loginDialog" id="loginInSignUp" onclick="loginInSignUp();">
+              Login
+            </button>
+              </div>
+    
+              <div class="loginLink logoutBtns">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#logOutModal">Logout</button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    <main>
+        <ul class="adminBlock">
+            <li>
+                <h3>Add new product</h3>
+            </li>
+            <li>
+                <input type="text" class="form-control" placeholder="Product Id" id="productId">
+            </li>
+            <li>
+                <select id="productCategory" class="form-control">
+                    <option>Select Category</option>
+                    <option value="Electronics" selected>Electronics</option>
+                    <option value="Kids wear">Kids wear</option>
+                    <option value="Home Appliances">Home Appliances</option>
+                    <option value="Books">Book</option>
+                    <option value="Education">Education</option>
+                </select>
+            </li>
+            <li>
+                <input type="text" class="form-control" placeholder="Product Name" id="productName">
+            </li>
+            <li>
+                <input type="number" class="form-control" placeholder="Product Price" id="productPrice">
+            </li>
+            <li>
+                <input type="text" class="form-control" placeholder="Product Seller" id="productSeller">
+            </li>
+            <li>
+                <input type="text" class="form-control" placeholder="Product Manufacturer" id="productManu">
+            </li>
+            <li>
+                <form method="POST" enctype="multipart/form-data">
+                    <input type="file" name="prodImage" class="btn btn-primary">
+                    <input type="button" value="Upload Image" onclick="uploadProductImage()"
+                        class="btn btn-outline-primary">
+                </form>
+                <div id="upload">Nothing to Upload</div>
+                <div id="imgSuccessMsg">Image Uploaded successfully</div>
+                <div id="imgValidation">Upload Image format only</div>
+            </li>
+            <li>
+                <input type="number" class="form-control" placeholder="Product rating" id="productRating" max="5">
+            </li>
+            <li id="addedSuccess">
+                Product Added Successfully
+            </li>
+            <li id="fieldValidation">
+                All fields are mandatory including image
+            </li>
+            <li id="addedFailure">
+                Error while adding Product
+            </li>
+            <li>
+                <input type="button" value="Add Product" class="btn btn-primary" onclick="readProductDetails()">
+            </li>
+        </ul>
+    </main>
+    <footer></footer>
+
+      <!-- Login Modal -->
+  <div class="modal fade" id="loginDialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Admin Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="closeBtn();"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter admin Id" id="adminId">
+            </li>
+            <li>
+              <input type="password" class="form-control" placeholder="Account Password" id="actPassword">
+            </li>
+            <li>
+              <input type="text" class="form-control" placeholder="Enter below Captcha" id="captchaInput">
+            </li>
+            <li class="captcha">
+              <img id="captchaImage" src="">
+              <button class="btn btn-secondary refresh-btn" onclick="refreshCaptcha()">Refresh</button>
+            </li>
+
+            <li>
+              <p><a class="link-opacity-100" href="#" data-bs-toggle="modal" data-bs-target="#forgotPwdDialog"
+                  id="forgotPwdInLogin" onclick="forgotPwdInLogin();">Forgot
+                  Password</a></p>
+            </li>
+            <li>
+              <input type="checkbox" id="rememberMeCheckbox">
+              <label for="rememberMeCheckbox">Remember me</label>
+            </li>
+            <li class="invalidCredentials">
+              Invalid Credentials Id / Password..
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeBtn();"
+            id="closeButton">Close</button>
+          <button type="button" class="btn btn-primary" onclick="validateeAdminCredentials();">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  h3 Bookdetails about to render
+  each data in bdata 
+    ul 
+        li 
+            div Bookname #{data.name}
+        li 
+            div Price: #{data.price}  
+        li 
+            div Publisher #{data.publisher}
